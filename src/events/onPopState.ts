@@ -3,7 +3,7 @@ export type EPopState = RegisteredEvent<(event: PopStateEvent) => any>;
 import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
+import { createEvent } from '../helpers/createEvent';
 import { onBeforeUnmount } from '@vue/runtime-dom';
 import { removeEvent } from '../helpers/removeChild';
 
@@ -20,7 +20,7 @@ export function onPopState(handler: EPopState['handler']) {
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as EPopState;
+   const event = createEvent<EPopState>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {

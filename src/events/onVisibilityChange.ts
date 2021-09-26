@@ -3,7 +3,7 @@ export type EVisibilityChange = RegisteredEvent<(state: VisibilityState, event: 
 import { documentAdd, documentRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
+import { createEvent } from '../helpers/createEvent';
 import { onBeforeUnmount } from '@vue/runtime-dom';
 import { removeEvent } from '../helpers/removeChild';
 
@@ -20,7 +20,7 @@ export function onVisibilityChange(handler: EVisibilityChange['handler']) {
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as EVisibilityChange;
+   const event = createEvent<EVisibilityChange>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {

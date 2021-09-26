@@ -3,7 +3,7 @@ export type EBeforeUnload = RegisteredEvent<(event: BeforeUnloadEvent) => any>;
 import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
+import { createEvent } from '../helpers/createEvent';
 import { onBeforeUnmount } from '@vue/runtime-dom';
 import { removeEvent } from '../helpers/removeChild';
 
@@ -20,7 +20,7 @@ export function onBeforeUnload(handler: EBeforeUnload['handler']) {
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as EBeforeUnload;
+   const event = createEvent<EBeforeUnload>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {

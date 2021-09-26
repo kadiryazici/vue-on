@@ -1,28 +1,28 @@
 export type OnlineOrOffline = 'online' | 'offline';
-export type OnlineOrOfflineEvent = RegisteredEvent<(kind: OnlineOrOffline, event: Event) => any>;
+export type EOnlineOrOffline = RegisteredEvent<(kind: OnlineOrOffline, event: Event) => any>;
 
 import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
+import { createEvent } from '../helpers/createEvent';
 import { onBeforeUnmount } from '@vue/runtime-dom';
 import { removeEvent } from '../helpers/removeChild';
 
-const registered = [] as OnlineOrOfflineEvent[];
+const registered = [] as EOnlineOrOffline[];
 let isCreatedOnce = false;
 
 /**
  *@description a handler for orientation events in browser.
  *@see https://developer.mozilla.org/en-US/docs/Web/API/Window/deviceorientation_event
  */
-export function onConnectionStatusChange(handler: OnlineOrOfflineEvent['handler']) {
+export function onConnectionStatusChange(handler: EOnlineOrOffline['handler']) {
    if (!isCreatedOnce) {
       windowAdd('online', onlineOfflineEventHandler);
       windowAdd('offline', onlineOfflineEventHandler);
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as OnlineOrOfflineEvent;
+   const event = createEvent<EOnlineOrOffline>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {
