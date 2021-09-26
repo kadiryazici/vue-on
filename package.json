@@ -1,5 +1,5 @@
 {
-   "name": "vue-on",
+   "name": "@kadiryazici/vue-on",
    "version": "0.0.1",
    "description": "Collection of event utilities for vue3 composition api.",
    "files": [
