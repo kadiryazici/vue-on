@@ -14,7 +14,7 @@ let isCreatedOnce = false;
  *@description a handler for visibilitychange event in browser.
  *@see https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event
  */
-export function onVisibilityChange(handler: EHashChange['handler']) {
+export function onHashChange(handler: EHashChange['handler']) {
    if (!isCreatedOnce) {
       windowAdd('hashchange', hashChangeHandler);
       isCreatedOnce = true;
