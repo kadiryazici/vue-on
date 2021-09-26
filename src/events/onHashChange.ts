@@ -3,7 +3,7 @@ export type EHashChange = RegisteredEvent<(event: Event) => any>;
 import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
+import { createEvent } from '../helpers/createEvent';
 import { onBeforeUnmount } from '@vue/runtime-dom';
 import { removeEvent } from '../helpers/removeChild';
 
@@ -20,7 +20,7 @@ export function onVisibilityChange(handler: EHashChange['handler']) {
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as EHashChange;
+   const event = createEvent<EHashChange>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {
