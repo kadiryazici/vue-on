@@ -82,12 +82,25 @@ Same as `window.onpopstate`.
 
 ### onVisibilityChange
 
-Same as `window.onpopstate` but first parameter is visibility state.
+Same as `window.onvisibilitychange` but first parameter is visibility state.
 
 ```html
 <script setup>
-   import { onPopState } from '@kadiryazici/vue-on';
-   onPopState((state: /* 'hidden' | 'visible' */, event /* Event */) => {
+   import { onVisibilityChange } from '@kadiryazici/vue-on';
+   onVisibilityChange((state: /* 'hidden' | 'visible' */, event /* Event */) => {
+      ...
+   });
+</script>
+```
+
+### onPaste
+
+Same as `window.onpaste`.
+
+```html
+<script setup>
+   import { onPaste } from '@kadiryazici/vue-on';
+   onPaste((event /* ClipBoardEvent */) => {
       ...
    });
 </script>
