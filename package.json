@@ -1,0 +1,43 @@
+{
+   "name": "vue-on",
+   "version": "0.0.1",
+   "description": "Collection of event utilities for vue3 composition api.",
+   "files": [
+      "dist"
+   ],
+   "main": "dist/vue-on.umd.js",
+   "module": "./dist/vue-on.es.js",
+   "exports": {
+      ".": {
+         "import": "./dist/vue-on.es.js",
+         "require": "./dist/vue-on.umd.js"
+      }
+   },
+   "types": "./dist/types/index.d.ts",
+   "scripts": {
+      "dev": "vite",
+      "build": "vite build && tsc --emitDeclarationOnly"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/kadiryazici/vue-on"
+   },
+   "keywords": [
+      "vue"
+   ],
+   "author": "Kadir Yazıcı",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/kadiryazici/vue-on/discussions"
+   },
+   "homepage": "https://github.com/kadiryazici/vue-on#readme",
+   "devDependencies": {
+      "@types/node": "^16.10.1",
+      "@vue/runtime-dom": "^3.2.19",
+      "typescript": "^4.4.3",
+      "vite": "^2.5.7"
+   },
+   "dependencies": {
+      "nanoid": "^3.1.25"
+   }
+}

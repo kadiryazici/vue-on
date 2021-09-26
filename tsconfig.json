@@ -1,0 +1,21 @@
+{
+   "compilerOptions": {
+      "lib": ["DOM", "ESNext"],
+      "baseUrl": ".",
+      "outDir": "dist",
+      "declaration": true,
+      "sourceMap": false,
+      "target": "esnext",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "allowJs": false,
+      "strict": true,
+      "noUnusedLocals": true,
+      "rootDir": ".",
+      "types": ["vite/client"],
+      "paths": {
+         "/*": ["./*"]
+      }
+   },
+   "include": ["src"]
+}
