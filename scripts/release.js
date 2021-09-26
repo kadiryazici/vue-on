@@ -41,7 +41,7 @@ async function main() {
       })
    ).message;
    await run('git', ['add', '.']);
-   await run('git', ['commit', '-m', `"${commitMessage}"`]);
+   await run('git', ['commit', '-m', `${commitMessage}`]);
    await run('git', ['push', 'origin', 'main']);
 
    await run('npm', ['publish', '--access="public"']);
