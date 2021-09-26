@@ -4,7 +4,7 @@ import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
 import { createEvent } from '../helpers/createEvent';
-import { onBeforeUnmount } from '@vue/runtime-dom';
+import { onBeforeUnmount } from 'vue';
 import { removeEvent } from '../helpers/removeChild';
 
 const registered = [] as EPopState[];

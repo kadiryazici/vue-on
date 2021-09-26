@@ -1,6 +1,6 @@
 # Vue ON
 
-Collection of `window`/`document` event handlers for composition api. Functions should be used only in `SETUP` phase.
+Collection of `window`/`document` event handlers for `Vue ^3.2.0`composition api. Functions should be used only in `SETUP` phase.
 When component unmounts, events are automatically removed from `window`/`document`.
 
 [![VueON](https://img.shields.io/npm/v/@kadiryazici/vue-on)](https://npmjs.com/package/@kadiryazici/vue-on)

@@ -9,6 +9,7 @@
       "module": "esnext",
       "moduleResolution": "node",
       "allowJs": false,
+      "jsx": "preserve",
       "strict": true,
       "noUnusedLocals": true,
       "rootDir": ".",

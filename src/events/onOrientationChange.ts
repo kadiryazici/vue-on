@@ -3,8 +3,8 @@ export type EDeviceOrientation = RegisteredEvent<(event: DeviceOrientationEvent)
 import { windowAdd, windowRemove } from '../helpers/listen';
 
 import { RegisteredEvent } from '../types';
-import { createID } from '../helpers/createID';
-import { onBeforeUnmount } from '@vue/runtime-dom';
+import { createEvent } from '../helpers/createEvent';
+import { onBeforeUnmount } from 'vue';
 import { removeEvent } from '../helpers/removeChild';
 
 const registered = [] as EDeviceOrientation[];
@@ -20,7 +20,7 @@ export function onOrientationChange(handler: EDeviceOrientation['handler']) {
       isCreatedOnce = true;
    }
 
-   const event = { id: createID(), handler } as EDeviceOrientation;
+   const event = createEvent<EDeviceOrientation>(handler);
    registered.push(event);
 
    onBeforeUnmount(() => {
