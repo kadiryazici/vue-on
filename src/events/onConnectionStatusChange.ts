@@ -1,6 +1,8 @@
 export type OnlineOrOffline = 'online' | 'offline';
 export type OnlineOrOfflineEvent = RegisteredEvent<(kind: OnlineOrOffline, event: Event) => any>;
 
+import { windowAdd, windowRemove } from '../helpers/listen';
+
 import { RegisteredEvent } from '../types';
 import { createID } from '../helpers/createID';
 import { onBeforeUnmount } from '@vue/runtime-dom';
@@ -9,17 +11,14 @@ import { removeEvent } from '../helpers/removeChild';
 const registered = [] as OnlineOrOfflineEvent[];
 let isCreatedOnce = false;
 
-const add = window.addEventListener;
-const remove = window.removeEventListener;
-
 /**
- *@description a handler for online/offline events in browser.
- *@see https://developer.mozilla.org/en-US/docs/Web/API/Navigator/Online_and_offline_events
+ *@description a handler for orientation events in browser.
+ *@see https://developer.mozilla.org/en-US/docs/Web/API/Window/deviceorientation_event
  */
 export function onConnectionStatusChange(handler: OnlineOrOfflineEvent['handler']) {
    if (!isCreatedOnce) {
-      add('online', onlineOfflineEventHandler);
-      add('offline', onlineOfflineEventHandler);
+      windowAdd('online', onlineOfflineEventHandler);
+      windowAdd('offline', onlineOfflineEventHandler);
       isCreatedOnce = true;
    }
 
@@ -29,8 +28,8 @@ export function onConnectionStatusChange(handler: OnlineOrOfflineEvent['handler'
    onBeforeUnmount(() => {
       removeEvent(registered, event.id);
       if (registered.length <= 0) {
-         remove('online', onlineOfflineEventHandler);
-         remove('offline', onlineOfflineEventHandler);
+         windowRemove('online', onlineOfflineEventHandler);
+         windowRemove('offline', onlineOfflineEventHandler);
          isCreatedOnce = false;
       }
    });

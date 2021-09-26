@@ -30,6 +30,20 @@ async function main() {
    ).version;
 
    await updatePackage(targetVersion);
+
+   /**@type {string} */
+   const commitMessage = (
+      await prompt({
+         type: 'input',
+         name: 'message',
+         message: 'git commit message',
+         initial: 'default commit message'
+      })
+   ).message;
+   await run('git', ['add', '.']);
+   await run('git', ['commit', '-m', `"${commitMessage}"`]);
+   await run('git', ['push', 'origin', 'main']);
+
    await run('npm', ['publish', '--access="public"']);
 }
 
