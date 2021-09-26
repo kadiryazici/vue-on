@@ -32,12 +32,17 @@
    },
    "homepage": "https://github.com/kadiryazici/vue-on#readme",
    "devDependencies": {
+      "@types/fs-extra": "^9.0.13",
       "@types/node": "^16.10.1",
-      "@vue/runtime-dom": "^3.2.19",
+      "@vue/runtime-dom": "^3.2.0",
+      "fs-extra": "^10.0.0",
       "typescript": "^4.4.3",
       "vite": "^2.5.7"
    },
    "dependencies": {
       "nanoid": "^3.1.25"
+   },
+   "peerDependencies": {
+      "@vue/runtime-dom": "^3.2.0"
    }
 }
