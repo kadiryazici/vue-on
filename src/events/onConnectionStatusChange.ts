@@ -16,7 +16,7 @@ const remove = window.removeEventListener;
  *@description a handler for online/offline events in browser.
  *@see https://developer.mozilla.org/en-US/docs/Web/API/Navigator/Online_and_offline_events
  */
-export function onConnectionStatusChange(kind: OnlineOrOffline, handler: OnlineOrOfflineEvent['handler']) {
+export function onConnectionStatusChange(handler: OnlineOrOfflineEvent['handler']) {
    if (!isCreatedOnce) {
       add('online', onlineOfflineEventHandler);
       add('offline', onlineOfflineEventHandler);
@@ -25,6 +25,7 @@ export function onConnectionStatusChange(kind: OnlineOrOffline, handler: OnlineO
 
    const event = { id: createID(), handler } as OnlineOrOfflineEvent;
    registered.push(event);
+
    onBeforeUnmount(() => {
       removeEvent(registered, event.id);
       if (registered.length <= 0) {
